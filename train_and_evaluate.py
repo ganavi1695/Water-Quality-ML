@@ -194,6 +194,19 @@ sample = X_test.iloc[0:5]   # first 5 rows from your test set
 print("Predictions:", best_model.predict(sample))
 
 
+# In[10]:
+
+
+import pandas as pd
+
+results = pd.read_csv("reports/results.csv")
+
+# Get best by Test Accuracy
+best = results.sort_values(by="Test_Accuracy", ascending=False).iloc[0]
+print("Best Model:")
+print(best)
+
+
 # In[ ]:
 
 
