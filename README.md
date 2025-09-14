@@ -30,11 +30,10 @@ Source: [Kaggle - Water Potability](https://www.kaggle.com/datasets/adityakadiwa
 - **Original shape:** (3276, 10)  
 - **Shape after cleaning:** (3276, 10)  
 - **Missing values before cleaning:**
-pH 491
-Sulfate 781
-Trihalomethanes 162
-- **Missing values after cleaning:**  
-All columns: 0
+  - pH → 491  
+  - Sulfate → 781  
+  - Trihalomethanes → 162  
+- **Missing values after cleaning:** 0 in all columns  
 
 ---
 
@@ -61,9 +60,9 @@ All columns: 0
 | Logistic Regression   | 0.5055      | 0.5259        | 0.4164    | 0.5352 | 0.4684 | 0.548  |
 
 ### 🔹 Key Findings
-- **Random Forest** achieved the **highest Test Accuracy (66%)** and **ROC-AUC (65%)** among all models.  
+- **Random Forest** achieved the **highest Test Accuracy (66%)** and **ROC-AUC (65%)**.  
 - Logistic Regression had slightly better recall but overall lower accuracy.  
-- Random Forest was chosen as the **final model** for further deployment.  
+- Random Forest was chosen as the **final model** for deployment.  
 
 ### 🔹 Outputs Generated
 - **Best model saved:** `models/best_model.pkl`
@@ -71,6 +70,25 @@ All columns: 0
 - **Visualizations:**  
   - Confusion matrices for each model  
   - Accuracy comparison chart  
-  - Feature importance plot (for Random Forest)
+  - Feature importance plot (Random Forest)  
 
 ---
+
+## 🚀 Week 3 – Deployment
+
+### 🔹 Deployment Steps
+1. Trained model was saved as `models/best_model.pkl` using **joblib**.  
+2. A `predict.py` script was created to:  
+   - Load the trained model  
+   - Accept new input data (CSV file)  
+   - Return predictions (Potable = 1 / Not Potable = 0)  
+3. Example input file: `sample_input.csv` (without target column).  
+4. Example output file: `predictions.csv` containing predictions.  
+
+### 🔹 How to Run
+```bash
+# Install requirements
+pip install -r requirements.txt
+
+# Run predictions on new data
+python predict.py sample_input.csv
